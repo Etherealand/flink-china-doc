@@ -23,10 +23,10 @@ jobs:
     # Runs a single command using the runners shell
     - name: install git lfs
       run: git lfs install
-    - name: install bundler
-      run: gem install bundler:1.15.1 && whereis bundler && export PATH=$PATH:/home/runner/.rubies/ruby-2.3.0/bin && source /etc/profile
+    - name: chmod sh
+      run: git lfs install
     - name: build docs
-      run:  chmod +x ./build_docs.sh && sudo ./build_docs.sh
+      run:  chmod +x ./docker/run.sh && sudo ./docker/run.sh
     - name: Commit #上传生成的文档到仓库
       run: |
         git lfs install
