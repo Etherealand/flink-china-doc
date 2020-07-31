@@ -35,7 +35,7 @@ if [ "`command -v /home/runner/.rubies/ruby-2.6.6/bin/bundle`" == "" ]; then
     # install bundler locally
     gem install --user-install bundler
 fi
-
+gem install yajl-ruby -v '1.2.1'
 # Install Ruby dependencies locally
 /home/runner/.rubies/ruby-2.6.6/bin/bundle install --path .rubydeps
 
