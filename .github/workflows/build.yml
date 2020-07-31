@@ -24,7 +24,7 @@ jobs:
     - name: install git lfs
       run: git lfs install
     - name: build docs
-      run: ./build_docs.sh
+      run: sudo ./build_docs.sh
     - name: Commit #上传生成的文档到仓库
       run: |
         git lfs install
