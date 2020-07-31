@@ -23,7 +23,7 @@ cd "$(dirname ${BASH_SOURCE[0]})"
 DIR="`pwd`"
 
 # We need at least bundler to proceed
-if [ "`command -v bundle`" == "" ]; then
+if [ "`command -v /home/runner/.rubies/ruby-2.6.6/bin/bundle`" == "" ]; then
 	echo "WARN: Could not find bundle."
     echo "Attempting to install locally. If this doesn't work, please install with 'gem install bundler'."
 
@@ -37,7 +37,7 @@ if [ "`command -v bundle`" == "" ]; then
 fi
 
 # Install Ruby dependencies locally
-bundle install --path .rubydeps
+/home/runner/.rubies/ruby-2.6.6/bin/bundle install --path .rubydeps
 
 DOCS_SRC=${DIR}
 DOCS_DST=${DOCS_SRC}/content
@@ -55,11 +55,11 @@ while getopts "pi" opt; do
 		i)
 		[[ `ruby -v` =~ 'ruby 1' ]] && echo "Error: building the docs with the incremental option requires at least ruby 2.0" && exit 1
 		cd ruby2
-		bundle install --path .rubydeps
+		/home/runner/.rubies/ruby-2.6.6/bin/bundle install --path .rubydeps
 		JEKYLL_CMD="liveserve --baseurl= --watch --incremental"
 		;;
 	esac
 done
 
 # use 'bundle exec' to insert the local Ruby dependencies
-bundle exec jekyll ${JEKYLL_CMD} --source "${DOCS_SRC}" --destination "${DOCS_DST}"
+/home/runner/.rubies/ruby-2.6.6/bin/bundle exec jekyll ${JEKYLL_CMD} --source "${DOCS_SRC}" --destination "${DOCS_DST}"
